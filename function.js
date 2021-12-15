@@ -9,7 +9,6 @@ function neighboring(index, idx){
         return true;
     return false;
 }
-
 function mix(){
     var to, from
     while (0 !== from){
@@ -18,13 +17,11 @@ function mix(){
         theModel.move(from, to, 1)
     }
 }
-
 function find_zero(){
     for(var e = 0; e < theModel.count; e++)
         if(theModel.get(e).number === 0)
             return e
 }
-
 function formula(){
     var iter = 0
     var iter2
@@ -32,18 +29,20 @@ function formula(){
     while(iter < 16){
         iter2 = iter + 1
         while(iter2 < 16){
-            if(theModel.get(iter).number < theModel.get(iter2).number)
+            if(theModel.get(iter).number > theModel.get(iter2).number)
                 k++
             iter2++
         }
         iter++
     }
-    var N = k + Math.floor((find_zero() / 4)) + 1
+    var number_zero = Math.floor((find_zero() / 4)) + 1
+    var N = k + number_zero
     return N
 }
 
 function solvable(){
     do{
         mix()
-    }while(formula() % 2 === 0)
+        console.log("solvable")
+    }while(formula() % 2 !== 0)
 }

@@ -44,15 +44,17 @@ ApplicationWindow{
         }
     }
 
-    TileModel{
-        id: theModel
-    }
-
     GameBoard{
         anchors.fill: parent
         anchors.margins: 50
         clip: true
+
+        model: TileModel{
+            id: theModel
+        }
     }
 
-    Button_mix{ }
+    ButtonMix{
+        onClicked: { Func.solvable() }
+    }
 }

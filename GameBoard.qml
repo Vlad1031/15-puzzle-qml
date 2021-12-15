@@ -3,17 +3,13 @@ import "function.js" as Func
 
 GridView{
     id: view
-    model: TileModel {}
 
     cellHeight: height / 4
     cellWidth: width / 4
     anchors.margins: 5
     interactive: false
 
-    Component.onCompleted: {
-        Func.solvable()
-    }
-
+    Component.onCompleted: { Func.solvable() }
 
     delegate: Item{
         id: backgroundDelegate
@@ -48,16 +44,11 @@ GridView{
     }
 
     move: Transition {
+        id: transit
         NumberAnimation{
             properties: "x, y"
             duration: 200
         }
     }
-
-    displaced: Transition {
-        NumberAnimation{
-            properties: "x, y"
-            duration: 200
-        }
-    }
+    displaced: transit
 }
