@@ -4,7 +4,8 @@ import QtQuick.Controls 2.4
 import "function.js" as Func
 
 Button{
-    id: mix_button
+    id: root
+    property alias rectColor: rect_but.color
 
     Rectangle{
         id: rect_but

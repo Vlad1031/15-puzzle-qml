@@ -2,19 +2,17 @@ import QtQuick 2.15
 import "function.js" as Func
 
 GridView{
-    id: view
+    id: root
 
     cellHeight: height / 4
     cellWidth: width / 4
     anchors.margins: 5
     interactive: false
 
-    Component.onCompleted: { Func.solvable() }
-
     delegate: Item{
         id: backgroundDelegate
-        width: view.cellWidth
-        height: view.cellHeight
+        width: root.cellWidth
+        height: root.cellHeight
         visible: number
 
         Tile{
@@ -27,7 +25,6 @@ GridView{
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                console.log(index)
                 var idx = 0
                 while(theModel.get(idx).number !== 0){
                     idx++
@@ -43,12 +40,16 @@ GridView{
         }
     }
 
-    move: Transition {
+    move: transit
+    displaced: transit
+
+    Transition {
         id: transit
         NumberAnimation{
             properties: "x, y"
             duration: 200
         }
     }
-    displaced: transit
+
+    Component.onCompleted: { Func.shuffle() }
 }

@@ -14,7 +14,10 @@ ApplicationWindow{
     minimumWidth: 350
     minimumHeight: 350
 
-    menuBar: MyMenuBar{ }
+    menuBar: MyMenuBar{
+        onOpenNewDialog: newdialog.open()
+        onOpenAboutDialog: aboutDialog.open()
+    }
 
     Dialog {
         id: aboutDialog
@@ -36,7 +39,7 @@ ApplicationWindow{
         id: newdialog
         title: "New game"
         standardButtons: Dialog.Yes | Dialog.No
-        onYes: Func.solvable()
+        onYes: { Func.shuffle() }
         Label {
             anchors.fill: parent
             text: "Just start a new game?"
@@ -55,6 +58,10 @@ ApplicationWindow{
     }
 
     ButtonMix{
-        onClicked: { Func.solvable() }
+        onPressed: {
+            rectColor = "#FF0000"
+            Func.shuffle()
+        }
+        onReleased: { rectColor = "#FFA500" }
     }
 }

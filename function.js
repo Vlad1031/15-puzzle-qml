@@ -14,7 +14,10 @@ function mix(){
     while (0 !== from){
         from = Math.floor(Math.random() * 16)
         to = Math.floor(Math.random() * 16)
-        theModel.move(from, to, 1)
+
+        var temp = theModel.get(from).number
+        theModel.get(from).number = theModel.get(to).number
+        theModel.get(to).number = temp
     }
 }
 function find_zero(){
@@ -24,7 +27,7 @@ function find_zero(){
 }
 function formula(){
     var iter = 0
-    var iter2
+    var iter2 = 0
     var k = 0
     while(iter < 16){
         iter2 = iter + 1
@@ -35,14 +38,16 @@ function formula(){
         }
         iter++
     }
+
     var number_zero = Math.floor((find_zero() / 4)) + 1
     var N = k + number_zero
-    return N
+
+    var res = N % 2
+    return res
 }
 
-function solvable(){
+function shuffle(){
     do{
         mix()
-        console.log("solvable")
-    }while(formula() % 2 !== 0)
+    }while(formula() === 0)
 }
