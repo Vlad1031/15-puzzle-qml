@@ -29,19 +29,20 @@ function formula(){
     var iter = 0
     var iter2 = 0
     var k = 0
-    while(iter < 16){
+
+    for(iter = 0; iter < 16; iter++){
         iter2 = iter + 1
-        while(iter2 < 16){
-            if(theModel.get(iter).number > theModel.get(iter2).number)
-                k++
-            iter2++
+        for(iter2 = 0; iter2 < 16; iter2++){
+            if(theModel.get(iter) !== 0 && theModel.get(iter2) !== 0){
+                if(theModel.get(iter).number > theModel.get(iter2).number){
+                    k++
+                }
+            }
         }
-        iter++
     }
 
     var number_zero = Math.floor((find_zero() / 4)) + 1
     var N = k + number_zero
-
     var res = N % 2
     return res
 }
