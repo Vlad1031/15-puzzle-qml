@@ -29,14 +29,17 @@ function formula(){
     var k = 0
 
     for(var iter = 0; iter < 16; iter++){
-        for(var iter2 = iter + 1; iter2 < 16; iter2++){
-            if(theModel.get(iter) !== 0 && theModel.get(iter2) !== 0){
-                if(theModel.get(iter).number > theModel.get(iter2).number){
-                    k++
+        if(theModel.get(iter).number !== 0){
+            for(var iter2 = iter + 1; iter2 < 16; iter2++){
+                if(theModel.get(iter2).number !== 0){
+                    if(theModel.get(iter).number > theModel.get(iter2).number){
+                        k++
+                    }
                 }
             }
         }
     }
+
 
     var number_zero = Math.floor((find_zero() / 4)) + 1
     var N = k + number_zero
@@ -47,5 +50,5 @@ function formula(){
 function shuffle(){
     do{
         mix()
-    }while(formula() === 0)
+    }while(formula() !== 0)
 }
