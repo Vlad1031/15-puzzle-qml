@@ -39,8 +39,6 @@ function formula(){
             }
         }
     }
-
-
     var number_zero = Math.floor((find_zero() / 4)) + 1
     var N = k + number_zero
     var res = N % 2
@@ -51,4 +49,13 @@ function shuffle(){
     do{
         mix()
     }while(formula() !== 0)
+}
+
+function popup(){
+    for(var index = 0; index < 15; index++){
+        if(theModel.get(index).number !== index + 1){
+            return false
+        }
+    }
+    return true
 }

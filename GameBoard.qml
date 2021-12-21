@@ -3,7 +3,6 @@ import "function.js" as Func
 
 GridView{
     id: root
-
     cellHeight: height / 4
     cellWidth: width / 4
     anchors.margins: 5
@@ -32,6 +31,10 @@ GridView{
                 if(Func.neighboring(index, idx)){
                     theModel.move(idx, index, 1)
                     theModel.move(index, idx, 1)
+                    if(Func.popup() === true){
+                        mypopup.open()
+                        Func.shuffle()
+                    }
                 }
                 else{
                     return false

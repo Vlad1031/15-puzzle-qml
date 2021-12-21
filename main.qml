@@ -64,4 +64,8 @@ ApplicationWindow{
         }
         onReleased: { rectColor = "#FFA500" }
     }
+
+    MyPopup{
+        id: mypopup
+    }
 }

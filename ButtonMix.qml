@@ -7,8 +7,10 @@ Button{
     id: root
     property alias rectColor: rect_but.color
 
-    Rectangle{
+    background: Rectangle{
         id: rect_but
+        implicitWidth: 90
+        implicitHeight: 40
         color: "#FFA500"
         border.color: Qt.lighter("#000000")
         border.width: 5
